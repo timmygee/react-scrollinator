@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 
 
-const Scrollinator = () => (ComposedComponent) => (
+const Scrollinator = (ComposedComponent) => (
 
   class extends Component {
     constructor(props) {
       super(props);
 
       this.state = {
-        documentRect: null;
+        documentRect: null,
       };
 
       this.handleScroll = this.handleScroll.bind(this);
@@ -18,7 +18,6 @@ const Scrollinator = () => (ComposedComponent) => (
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
-
         this.savePositions();
     }
 
@@ -27,11 +26,11 @@ const Scrollinator = () => (ComposedComponent) => (
     }
 
     savePositions() {
-        this.setState(
+        this.setState({
           ...this.state,
           documentRect: document.documentElement.getBoundingClientRect(),
           componentRect: findDOMNode(this).getBoundingClientRect(),
-        );
+        });
     }
 
     handleScroll() {
@@ -45,10 +44,9 @@ const Scrollinator = () => (ComposedComponent) => (
 
       return (
         <ComposedComponent
-          ref='wrappedComponent'
           {...props}
           {...state}
-        />;
+        />
       );
     }
   }
