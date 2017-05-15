@@ -264,7 +264,7 @@ const Scrollinator = (ComposedComponent) => (
                       </div>
                     </div>
                     <img
-                      src={childItemsProps[index].imgUrl.replace(/(\.\w+)$/, '@2x$1')}
+                      src={childItemsProps[index].imgUrl}
                       />
                   </div>
                 );
