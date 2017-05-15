@@ -23,6 +23,7 @@
     "test:watch": "yarn test -- --watch"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   }

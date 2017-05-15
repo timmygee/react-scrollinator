@@ -16,20 +16,22 @@ const ScrollinatorChild = (ComposedComponent) => (
     }
 
     sendScrollProps() {
-      const { scrollinatorChildInfo } = this.props;
-      const { childScrollPropsHandler } = scrollinatorChildInfo;
+      const { scrollinatorChildInfo, imgUrl } = this.props;
+      const { childItemsPropsHandler, targetY } = scrollinatorChildInfo;
 
-      if (childScrollPropsHandler) {
+      if (childItemsPropsHandler) {
         const componentRect = findDOMNode(this).getBoundingClientRect();
 
-        childScrollPropsHandler({
+        childItemsPropsHandler({
           componentHeight: componentRect.height,
           componentTopY: componentRect.top,
           componentBottomY: componentRect.bottom,
+          targetY,
+          imgUrl,
         });
       } else {
         console.warn(`\
-          ScrollinatorChild was not passed a childScrollPropsHandler callback. Behaviour may be \
+          ScrollinatorChild was not passed a childItemsPropsHandler callback. Behaviour may be \
           unpredictable`
         );
       }
